@@ -2,8 +2,30 @@
 <html>
   <head>
     <title>Hangman</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body>
-    <h1>Hello, its Hangman game</h1>
+  <body class="page">
+    <div class="main">
+      <section class="gallows-container">
+        <div class="gallows">
+          <span class="gallows-rectangle-1"></span>
+          <span class="gallows-rectangle-2"></span>
+          <span class="gallows-rectangle-3"></span>
+          <span class="gallows-rectangle-4"></span>
+          <img class="head" src="./img/head.svg" alt="head" />
+          <img class="body" src="./img/body.svg" alt="body" />
+          <img class="left-hand" src="./img/hand-left.svg" alt="left hand" />
+          <img class="right-hand" src="./img/hand-right.svg" alt="right hand" />
+          <img class="left-leg" src="./img/leg-left.svg" alt="left leg" />
+          <img class="right-leg" src="./img/leg-right.svg" alt="right leg" />
+        </div>
+        <div>
+          <h1 class="game-name">Hangman game</h1>
+        </div>
+      </section>
+      <script src="script.js"></script>
+    </div>
   </body>
 </html>

@@ -1,0 +1,111 @@
+body,
+h1 {
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  max-width: 1440px;
+  width: 100%;
+  background: yellow;
+  height: 100vh;
+}
+.gallows-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.gallows {
+  position: relative;
+  max-width: 400px;
+  height: 600px;
+  width: 100%;
+  margin-left: 20px;
+}
+.gallows-rectangle-1 {
+  position: absolute;
+  width: 42px;
+  height: 581px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 3px solid #fffefe;
+  background: #000;
+  margin-left: 40px;
+  z-index: 2;
+}
+
+.gallows-rectangle-2 {
+  position: absolute;
+  bottom: 360px;
+  left: 156px;
+  width: 42px;
+  height: 353px;
+  transform: rotate(90deg);
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 3px solid #fffefe;
+  background: #000;
+  z-index: 3;
+}
+
+.gallows-rectangle-3 {
+  position: absolute;
+  top: 23px;
+  left: 108px;
+  width: 42px;
+  height: 202.598px;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  border: 3px solid #fffefe;
+  background: #000;
+  z-index: 1;
+}
+
+.gallows-rectangle-4 {
+  position: absolute;
+  bottom: 442px;
+  left: 320px;
+  width: 10px;
+  height: 74px;
+  flex-shrink: 0;
+  background: #000;
+}
+
+.head {
+  position: absolute;
+  left: 276px;
+  top: 157px;
+}
+.body {
+  position: absolute;
+  left: 324px;
+  top: 254px;
+}
+.left-hand {
+  position: absolute;
+  left: 262px;
+  top: 254px;
+}
+.right-hand {
+  position: absolute;
+  left: 322px;
+  top: 254px;
+}
+.left-leg {
+  position: absolute;
+  left: 261px;
+  top: 382px;
+}
+.right-leg {
+  position: absolute;
+  left: 325px;
+  top: 382px;
+}
+.game-name {
+  font-size: 60px;
+  margin-left: 20px;
+}

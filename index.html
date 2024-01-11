@@ -14,16 +14,61 @@
           <span class="gallows-rectangle-2"></span>
           <span class="gallows-rectangle-3"></span>
           <span class="gallows-rectangle-4"></span>
-          <img class="head" src="./img/head.svg" alt="head" />
-          <img class="body" src="./img/body.svg" alt="body" />
-          <img class="left-hand" src="./img/hand-left.svg" alt="left hand" />
-          <img class="right-hand" src="./img/hand-right.svg" alt="right hand" />
-          <img class="left-leg" src="./img/leg-left.svg" alt="left leg" />
-          <img class="right-leg" src="./img/leg-right.svg" alt="right leg" />
+          <img
+            class="head"
+            id="head"
+            src="./img/head.svg"
+            alt="head"
+            hidden="true"
+          />
+          <img
+            class="body"
+            id="body"
+            src="./img/body.svg"
+            alt="body"
+            hidden="true"
+          />
+          <img
+            class="left-hand"
+            id="left-hand"
+            src="./img/hand-left.svg"
+            alt="left hand"
+            hidden="true"
+          />
+          <img
+            class="right-hand"
+            id="right-hand"
+            src="./img/hand-right.svg"
+            alt="right hand"
+            hidden="true"
+          />
+          <img
+            class="left-leg"
+            id="left-leg"
+            src="./img/leg-left.svg"
+            alt="left leg"
+            hidden="true"
+          />
+          <img
+            class="right-leg"
+            id="right-leg"
+            src="./img/leg-right.svg"
+            alt="right leg"
+            hidden="true"
+          />
         </div>
         <div>
           <h1 class="game-name">Hangman game</h1>
         </div>
+      </section>
+      <section class="game-container">
+        <div class="word" id="word"></div>
+        <p class="question" id="question"></p>
+        <div class="guesses-container">
+          <p id="incorrect">Incorrect guesses:</p>
+        </div>
+        <button onclick="selectLetter()">incor</button>
+        <div class="letters-container" id="letters-container"></div>
       </section>
       <script src="script.js"></script>
     </div>

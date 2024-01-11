@@ -9,16 +9,25 @@ h1 {
 }
 
 .main {
+  display: inline-flex;
+  justify-content: center;
   max-width: 1440px;
   width: 100%;
   background: yellow;
   height: 100vh;
+  flex-wrap: wrap;
 }
-.gallows-container {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.gallows-container,
+.game-container {
+  width: 50%;
+  min-width: 450px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .gallows {
   position: relative;
   max-width: 400px;
@@ -108,4 +117,33 @@ h1 {
 .game-name {
   font-size: 60px;
   margin-left: 20px;
+}
+.letters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.letter {
+  height: 40px;
+  width: 40px;
+  background-color: #434c63;
+  color: white;
+  border: none;
+}
+.letter:disabled {
+  background-color: gray;
+}
+.word-letter-unknown {
+  display: block;
+  border-bottom: 4px solid black;
+  width: 20px;
+  text-align: center;
+}
+.word {
+  display: flex;
+  gap: 10px;
+}
+.guesses {
+  color: red;
 }

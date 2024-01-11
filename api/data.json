@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "question": "Are small to medium-sized, omnivorous mammals belonging to several genera of the family Canidae.",
+    "word": ["F", "O", "X"]
+  },
+  {
+    "id": 2,
+    "question": "Is a thoroughfare for the conveyance of traffic that mostly has an improved surface for use by vehicles (motorized and non-motorized) and pedestrians.",
+    "word": ["R", "O", "A", "D"]
+  },
+  {
+    "id": 3,
+    "question": "Is one of the oldest alcoholic drinks in the world, the most widely consumed, and the third most popular drink after water and tea.",
+    "word": ["B", "E", "E", "R"]
+  }
+]

@@ -47,7 +47,6 @@ guesses.textContent = " " + incorrect + " / " + "6";
 incorrectGuesses.appendChild(guesses);
 
 const selectLetter = (letter, letterButton) => {
-  console.log(letterButton);
   letterButton.disabled = true;
   let test = document.querySelectorAll("#" + letter);
   if (test.length === 0) {
@@ -79,6 +78,22 @@ const selectLetter = (letter, letterButton) => {
       document.getElementById("right-leg").hidden = false;
       break;
     default:
-      alert("Нет таких значений");
+      return;
+  }
+
+  const openModal = () => {
+    let modal = document.getElementById("modal");
+  };
+
+  if (incorrect === 6) {
+    alert("You lose!");
+  }
+  const allWord = document.querySelectorAll(".word-letter");
+  const wordDisplayBlock = [...allWord].every(
+    (block) => block.style.display === "block"
+  );
+
+  if (wordDisplayBlock) {
+    alert("You win!");
   }
 };

@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body class="page">
+    <div class="modal-window" id="modal">
+      <div class="modal-window-content">
+        <h1>modalka</h1>
+      </div>
+    </div>
     <div class="main">
       <section class="gallows-container">
         <div class="gallows">
@@ -15,42 +20,42 @@
           <span class="gallows-rectangle-3"></span>
           <span class="gallows-rectangle-4"></span>
           <img
-            class="head"
+            class="head man"
             id="head"
             src="./img/head.svg"
             alt="head"
             hidden="true"
           />
           <img
-            class="body"
+            class="body man"
             id="body"
             src="./img/body.svg"
             alt="body"
             hidden="true"
           />
           <img
-            class="left-hand"
+            class="left-hand man"
             id="left-hand"
             src="./img/hand-left.svg"
             alt="left hand"
             hidden="true"
           />
           <img
-            class="right-hand"
+            class="right-hand man"
             id="right-hand"
             src="./img/hand-right.svg"
             alt="right hand"
             hidden="true"
           />
           <img
-            class="left-leg"
+            class="left-leg man"
             id="left-leg"
             src="./img/leg-left.svg"
             alt="left leg"
             hidden="true"
           />
           <img
-            class="right-leg"
+            class="right-leg man"
             id="right-leg"
             src="./img/leg-right.svg"
             alt="right leg"
@@ -67,7 +72,6 @@
         <div class="guesses-container">
           <p id="incorrect">Incorrect guesses:</p>
         </div>
-        <button onclick="selectLetter()">incor</button>
         <div class="letters-container" id="letters-container"></div>
       </section>
       <script src="script.js"></script>

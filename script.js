@@ -25,7 +25,6 @@ const onLoadPage = () => {
         letterButton.id = "button-" + letter;
         letterButton.addEventListener("click", function (e) {
           selectLetter(e.target.textContent, letterButton);
-          console.log(e.target.textContent, letterButton);
         });
 
         window.addEventListener("keypress", function (e) {
@@ -33,7 +32,6 @@ const onLoadPage = () => {
           var button = document.getElementById("button-" + key);
           if (button && !button.dataset.isLogged) {
             selectLetter(key, button);
-            console.log(button);
             button.dataset.isLogged = true;
           }
         });
@@ -48,7 +46,6 @@ const onLoadPage = () => {
     });
 };
 const question = () => {
-  console.log(questions);
   answer = questions[index - 1].word;
   let question = document.getElementById("question");
   question.textContent = questions[index - 1].question;

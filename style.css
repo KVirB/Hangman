@@ -2,10 +2,13 @@ body,
 h1 {
   margin: 0;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 .page {
   display: flex;
   justify-content: center;
+  overflow: scroll;
 }
 
 .main {
@@ -13,8 +16,7 @@ h1 {
   justify-content: center;
   max-width: 1440px;
   width: 100%;
-  background: yellow;
-  height: 100vh;
+  height: 100%;
   flex-wrap: wrap;
 }
 .gallows-container,
@@ -160,7 +162,7 @@ h1 {
 }
 .modal-window-content {
   display: flex;
-  width: 100%;
+  width: 80%;
   max-width: calc(800px - 32px);
   padding: 16px;
   flex-direction: column;
@@ -172,4 +174,42 @@ h1 {
   transform: translate(-50%, -50%);
   border-radius: 40px;
   background: white;
+}
+.question {
+  text-align: center;
+}
+@media (max-width: 500px) {
+  .game-container,
+  .gallows-container {
+    min-width: 340px;
+  }
+  .gallows-rectangle-2 {
+    left: 144px;
+    height: 315px;
+    bottom: 380px;
+  }
+  .gallows-rectangle-4 {
+    left: 250px;
+  }
+  .head {
+    left: 204px;
+  }
+  .body {
+    left: 252px;
+  }
+  .left-hand {
+    left: 190px;
+  }
+  .right-hand {
+    left: 251px;
+  }
+  .left-leg {
+    left: 188px;
+  }
+  .right-leg {
+    left: 253px;
+  }
+  .game-container {
+    margin-top: 20px;
+  }
 }

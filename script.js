@@ -2,8 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
   onLoadPage();
 });
 
-let index = 2;
+let index = 1;
+let questions;
 let incorrect = 0;
+let correct = 0;
+let modal = document.getElementById("modal");
+let answer;
+let gameStatus = document.getElementById("game-status");
+let gameAnswer = document.getElementById("game-answer");
+let numberOfGuesses = document.getElementById("number-of-guesses");
+
 const onLoadPage = () => {
   letters = [];
   fetch("api/letter.json")
@@ -14,8 +22,20 @@ const onLoadPage = () => {
         let letterButton = document.createElement("button");
         letterButton.classList.add("letter");
         letterButton.textContent = letter;
+        letterButton.id = "button-" + letter;
         letterButton.addEventListener("click", function (e) {
           selectLetter(e.target.textContent, letterButton);
+          console.log(e.target.textContent, letterButton);
+        });
+
+        window.addEventListener("keypress", function (e) {
+          var key = e.code.toUpperCase()[3];
+          var button = document.getElementById("button-" + key);
+          if (button && !button.dataset.isLogged) {
+            selectLetter(key, button);
+            console.log(button);
+            button.dataset.isLogged = true;
+          }
         });
         lettersContainer.appendChild(letterButton);
       });
@@ -23,22 +43,28 @@ const onLoadPage = () => {
   fetch("api/data.json")
     .then((response) => response.json())
     .then((data) => {
-      let question = document.getElementById("question");
-      question.textContent = data[index].question;
-      let word = document.getElementById("word");
-      data[index].word.forEach((letter) => {
-        let wordLetterUnknown = document.createElement("span");
-        wordLetterUnknown.classList.add("word-letter-unknown");
-        word.appendChild(wordLetterUnknown);
-
-        let wordLetter = document.createElement("span");
-        wordLetter.classList.add("word-letter");
-        wordLetter.id = letter;
-        wordLetter.textContent = letter;
-        wordLetter.style.display = "none";
-        wordLetterUnknown.appendChild(wordLetter);
-      });
+      questions = data;
+      question();
     });
+};
+const question = () => {
+  console.log(questions);
+  answer = questions[index - 1].word;
+  let question = document.getElementById("question");
+  question.textContent = questions[index - 1].question;
+  let word = document.getElementById("word");
+  questions[index - 1].word.forEach((letter) => {
+    let wordLetterUnknown = document.createElement("span");
+    wordLetterUnknown.classList.add("word-letter-unknown");
+    word.appendChild(wordLetterUnknown);
+
+    let wordLetter = document.createElement("span");
+    wordLetter.classList.add("word-letter");
+    wordLetter.id = letter;
+    wordLetter.textContent = letter;
+    wordLetter.style.display = "none";
+    wordLetterUnknown.appendChild(wordLetter);
+  });
 };
 let incorrectGuesses = document.getElementById("incorrect");
 let guesses = document.createElement("span");
@@ -46,18 +72,44 @@ guesses.classList.add("guesses");
 guesses.textContent = " " + incorrect + " / " + "6";
 incorrectGuesses.appendChild(guesses);
 
+const openModal = () => {
+  modal.style.display = "block";
+};
+
+const closeModal = () => {
+  modal.style.display = "none";
+};
+
 const selectLetter = (letter, letterButton) => {
   letterButton.disabled = true;
-  let test = document.querySelectorAll("#" + letter);
-  if (test.length === 0) {
+  const letters = document.querySelectorAll("#" + letter);
+
+  if (letters.length !== 0) {
+    correct += letters.length;
+  } else {
     if (incorrect < 6) {
       incorrect += 1;
       guesses.textContent = " " + incorrect + " / " + "6";
     }
   }
-  test.forEach((element) => {
+  letters.forEach((element) => {
     element.style.display = "block";
   });
+
+  if (correct === answer.length) {
+    gameStatus.textContent = "Status: You win!";
+    gameAnswer.textContent = `Answer: ${answer.join("")}`;
+    numberOfGuesses.textContent =
+      "Incorrect guesses " + incorrect + " / " + "6";
+    openModal();
+  }
+  if (incorrect === 6) {
+    gameStatus.textContent = "Status: You lose!";
+    gameAnswer.textContent = `Answer: ${answer.join("")}`;
+    numberOfGuesses.textContent =
+      "Incorrect guesses " + incorrect + " / " + "6";
+    openModal();
+  }
   switch (incorrect) {
     case 1:
       document.getElementById("head").hidden = false;
@@ -80,20 +132,31 @@ const selectLetter = (letter, letterButton) => {
     default:
       return;
   }
+};
 
-  const openModal = () => {
-    let modal = document.getElementById("modal");
-  };
-
-  if (incorrect === 6) {
-    alert("You lose!");
+const newGame = () => {
+  incorrect = 0;
+  correct = 0;
+  document.getElementById("head").hidden = true;
+  document.getElementById("body").hidden = true;
+  document.getElementById("left-hand").hidden = true;
+  document.getElementById("right-hand").hidden = true;
+  document.getElementById("left-leg").hidden = true;
+  document.getElementById("right-leg").hidden = true;
+  if (questions.length !== index) {
+    index += 1;
+  } else {
+    index = 1;
   }
-  const allWord = document.querySelectorAll(".word-letter");
-  const wordDisplayBlock = [...allWord].every(
-    (block) => block.style.display === "block"
-  );
-
-  if (wordDisplayBlock) {
-    alert("You win!");
+  let word = document.getElementById("word");
+  while (word.firstChild) {
+    word.removeChild(word.firstChild);
   }
+  document.querySelectorAll(".letter").forEach((block) => {
+    block.disabled = false;
+    block.removeAttribute("data-is-logged");
+  });
+  guesses.textContent = " " + incorrect + " / " + "6";
+  closeModal();
+  question();
 };

@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   onLoadPage();
 });
 
-let index = 1;
+let index = Math.floor(Math.random() * 3) + 1;
+let disableKeypress = false;
 let questions;
 let incorrect = 0;
 let correct = 0;
@@ -28,6 +29,9 @@ const onLoadPage = () => {
         });
 
         window.addEventListener("keypress", function (e) {
+          if (disableKeypress) {
+            return;
+          }
           var key = e.code.toUpperCase()[3];
           var button = document.getElementById("button-" + key);
           if (button && !button.dataset.isLogged) {
@@ -71,10 +75,12 @@ incorrectGuesses.appendChild(guesses);
 
 const openModal = () => {
   modal.style.display = "block";
+  disableKeypress = true;
 };
 
 const closeModal = () => {
   modal.style.display = "none";
+  disableKeypress = false;
 };
 
 const selectLetter = (letter, letterButton) => {

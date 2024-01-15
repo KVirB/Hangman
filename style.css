@@ -178,6 +178,17 @@ h1 {
 .question {
   text-align: center;
 }
+.btn-next {
+  background-color: #434c63;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn-next:hover {
+  background-color: gray;
+}
 @media (max-width: 500px) {
   .game-container,
   .gallows-container {

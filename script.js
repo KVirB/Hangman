@@ -152,7 +152,6 @@ lettersContainer.id = "letters-container";
 gameContainer.appendChild(lettersContainer);
 
 const onLoadPage = () => {
-  letters = [];
   fetch("api/letter.json")
     .then((response) => response.json())
     .then((data) => {

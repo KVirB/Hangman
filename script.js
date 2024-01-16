@@ -2,15 +2,154 @@ document.addEventListener("DOMContentLoaded", function () {
   onLoadPage();
 });
 
-let index = 1;
+let index = Math.floor(Math.random() * 10) + 1;
+let disableKeypress = false;
 let questions;
 let incorrect = 0;
 let correct = 0;
-let modal = document.getElementById("modal");
 let answer;
-let gameStatus = document.getElementById("game-status");
-let gameAnswer = document.getElementById("game-answer");
-let numberOfGuesses = document.getElementById("number-of-guesses");
+
+const page = document.getElementById("page");
+
+const modalWindow = document.createElement("div");
+modalWindow.classList.add("modal-window");
+modalWindow.id = "modal";
+page.appendChild(modalWindow);
+
+const modalWindowContent = document.createElement("div");
+modalWindowContent.classList.add("modal-window-content");
+modalWindow.appendChild(modalWindowContent);
+
+const gameStatusP = document.createElement("p");
+gameStatusP.id = "game-status";
+modalWindowContent.appendChild(gameStatusP);
+
+const gameAnswerP = document.createElement("p");
+gameAnswerP.id = "game-answer";
+modalWindowContent.appendChild(gameAnswerP);
+
+const numberOfGuessesP = document.createElement("p");
+numberOfGuessesP.id = "number-of-guesses";
+modalWindowContent.appendChild(numberOfGuessesP);
+
+const btnNext = document.createElement("button");
+btnNext.textContent = "New Game";
+btnNext.classList.add("btn-next");
+btnNext.addEventListener("click", function () {
+  newGame();
+});
+modalWindowContent.appendChild(btnNext);
+
+const main = document.createElement("div");
+main.classList.add("main");
+page.appendChild(main);
+
+const gallowsContainer = document.createElement("section");
+gallowsContainer.classList.add("gallows-container");
+main.appendChild(gallowsContainer);
+
+const gallows = document.createElement("div");
+gallows.classList.add("gallows");
+gallowsContainer.appendChild(gallows);
+
+const gallowsRectangle1 = document.createElement("span");
+gallowsRectangle1.classList.add("gallows-rectangle-1");
+gallows.appendChild(gallowsRectangle1);
+
+const gallowsRectangle2 = document.createElement("span");
+gallowsRectangle2.classList.add("gallows-rectangle-2");
+gallows.appendChild(gallowsRectangle2);
+
+const gallowsRectangle3 = document.createElement("span");
+gallowsRectangle3.classList.add("gallows-rectangle-3");
+gallows.appendChild(gallowsRectangle3);
+
+const gallowsRectangle4 = document.createElement("span");
+gallowsRectangle4.classList.add("gallows-rectangle-4");
+gallows.appendChild(gallowsRectangle4);
+
+const head = document.createElement("img");
+head.classList.add("head");
+head.id = "head";
+head.src = "./img/head.svg";
+head.alt = "head";
+head.hidden = true;
+gallows.appendChild(head);
+
+const body = document.createElement("img");
+body.classList.add("body");
+body.id = "body";
+body.src = "./img/body.svg";
+body.alt = "head";
+body.hidden = true;
+gallows.appendChild(body);
+
+const leftHand = document.createElement("img");
+leftHand.classList.add("left-hand");
+leftHand.id = "left-hand";
+leftHand.src = "./img/hand-left.svg";
+leftHand.alt = "left hand";
+leftHand.hidden = true;
+gallows.appendChild(leftHand);
+
+const rightHand = document.createElement("img");
+rightHand.classList.add("right-hand");
+rightHand.id = "right-hand";
+rightHand.src = "./img/hand-right.svg";
+rightHand.alt = "right hand";
+rightHand.hidden = true;
+gallows.appendChild(rightHand);
+
+const leftLeg = document.createElement("img");
+leftLeg.classList.add("left-leg");
+leftLeg.id = "left-leg";
+leftLeg.src = "./img/leg-left.svg";
+leftLeg.alt = "left leg";
+leftLeg.hidden = true;
+gallows.appendChild(leftLeg);
+
+const rightLeg = document.createElement("img");
+rightLeg.classList.add("right-leg");
+rightLeg.id = "right-leg";
+rightLeg.src = "./img/leg-right.svg";
+rightLeg.alt = "right leg";
+rightLeg.hidden = true;
+gallows.appendChild(rightLeg);
+
+const divForH1 = document.createElement("div");
+gallowsContainer.appendChild(divForH1);
+
+const gameName = document.createElement("h1");
+gameName.textContent = "Hangman game";
+gameName.classList.add("game-name");
+divForH1.appendChild(gameName);
+
+const gameContainer = document.createElement("section");
+gameContainer.classList.add("game-container");
+main.appendChild(gameContainer);
+
+const word = document.createElement("div");
+word.classList.add("word");
+word.id = "word";
+gameContainer.appendChild(word);
+
+const questionP = document.createElement("p");
+questionP.classList.add("question");
+questionP.id = "question";
+gameContainer.appendChild(questionP);
+
+const guessesContainer = document.createElement("div");
+gameContainer.appendChild(guessesContainer);
+
+const incorrectP = document.createElement("p");
+incorrectP.id = "incorrect";
+incorrectP.textContent = "Incorrect guesses:";
+guessesContainer.appendChild(incorrectP);
+
+const lettersContainer = document.createElement("div");
+lettersContainer.classList.add("letters-container");
+lettersContainer.id = "letters-container";
+gameContainer.appendChild(lettersContainer);
 
 const onLoadPage = () => {
   letters = [];
@@ -28,6 +167,9 @@ const onLoadPage = () => {
         });
 
         window.addEventListener("keypress", function (e) {
+          if (disableKeypress) {
+            return;
+          }
           var key = e.code.toUpperCase()[3];
           var button = document.getElementById("button-" + key);
           if (button && !button.dataset.isLogged) {
@@ -47,6 +189,7 @@ const onLoadPage = () => {
 };
 const question = () => {
   answer = questions[index - 1].word;
+  console.log("Answer: " + answer.join(""));
   let question = document.getElementById("question");
   question.textContent = questions[index - 1].question;
   let word = document.getElementById("word");
@@ -70,11 +213,13 @@ guesses.textContent = " " + incorrect + " / " + "6";
 incorrectGuesses.appendChild(guesses);
 
 const openModal = () => {
-  modal.style.display = "block";
+  modalWindow.style.display = "block";
+  disableKeypress = true;
 };
 
 const closeModal = () => {
-  modal.style.display = "none";
+  modalWindow.style.display = "none";
+  disableKeypress = false;
 };
 
 const selectLetter = (letter, letterButton) => {
@@ -94,16 +239,16 @@ const selectLetter = (letter, letterButton) => {
   });
 
   if (correct === answer.length) {
-    gameStatus.textContent = "Status: You win!";
-    gameAnswer.textContent = `Answer: ${answer.join("")}`;
-    numberOfGuesses.textContent =
+    gameStatusP.textContent = "Status: You win!";
+    gameAnswerP.textContent = `Answer: ${answer.join("")}`;
+    numberOfGuessesP.textContent =
       "Incorrect guesses " + incorrect + " / " + "6";
     openModal();
   }
   if (incorrect === 6) {
-    gameStatus.textContent = "Status: You lose!";
-    gameAnswer.textContent = `Answer: ${answer.join("")}`;
-    numberOfGuesses.textContent =
+    gameStatusP.textContent = "Status: You lose!";
+    gameAnswerP.textContent = `Answer: ${answer.join("")}`;
+    numberOfGuessesP.textContent =
       "Incorrect guesses " + incorrect + " / " + "6";
     openModal();
   }

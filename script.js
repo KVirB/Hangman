@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   onLoadPage();
 });
 
-let index = Math.floor(Math.random() * 3) + 1;
+let index = Math.floor(Math.random() * 10) + 1;
 let disableKeypress = false;
 let questions;
 let incorrect = 0;

@@ -1,0 +1,227 @@
+body,
+h1 {
+  margin: 0;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.page {
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  height: 100vh;
+}
+
+.main {
+  display: inline-flex;
+  justify-content: center;
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+.gallows-container,
+.game-container {
+  width: 50%;
+  min-width: 450px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallows {
+  position: relative;
+  max-width: 400px;
+  height: 600px;
+  width: 100%;
+  margin-left: 20px;
+}
+.gallows-rectangle-1 {
+  position: absolute;
+  width: 42px;
+  height: 581px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 3px solid #fffefe;
+  background: #000;
+  margin-left: 40px;
+  z-index: 2;
+}
+
+.gallows-rectangle-2 {
+  position: absolute;
+  bottom: 360px;
+  left: 156px;
+  width: 42px;
+  height: 353px;
+  transform: rotate(90deg);
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 3px solid #fffefe;
+  background: #000;
+  z-index: 3;
+}
+
+.gallows-rectangle-3 {
+  position: absolute;
+  top: 23px;
+  left: 108px;
+  width: 42px;
+  height: 202.598px;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  border: 3px solid #fffefe;
+  background: #000;
+  z-index: 1;
+}
+
+.gallows-rectangle-4 {
+  position: absolute;
+  bottom: 442px;
+  left: 320px;
+  width: 10px;
+  height: 74px;
+  flex-shrink: 0;
+  background: #000;
+}
+
+.head {
+  position: absolute;
+  left: 276px;
+  top: 157px;
+}
+.body {
+  position: absolute;
+  left: 324px;
+  top: 254px;
+}
+.left-hand {
+  position: absolute;
+  left: 262px;
+  top: 254px;
+}
+.right-hand {
+  position: absolute;
+  left: 322px;
+  top: 254px;
+}
+.left-leg {
+  position: absolute;
+  left: 261px;
+  top: 382px;
+}
+.right-leg {
+  position: absolute;
+  left: 325px;
+  top: 382px;
+}
+.game-name {
+  font-size: 60px;
+  margin-left: 20px;
+}
+.letters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.letter {
+  height: 40px;
+  width: 40px;
+  background-color: #434c63;
+  color: white;
+  border: none;
+}
+.letter:disabled {
+  background-color: gray;
+}
+.word-letter-unknown {
+  display: block;
+  border-bottom: 4px solid black;
+  width: 20px;
+  text-align: center;
+}
+.word {
+  display: flex;
+  gap: 10px;
+}
+.guesses {
+  color: red;
+}
+.modal-window {
+  display: none;
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(64, 63, 61, 0.8);
+}
+.modal-window-content {
+  display: flex;
+  width: 80%;
+  max-width: calc(800px - 32px);
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+  background: white;
+}
+.question {
+  text-align: center;
+}
+.btn-next {
+  background-color: #434c63;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn-next:hover {
+  background-color: gray;
+}
+@media (max-width: 500px) {
+  .game-container,
+  .gallows-container {
+    min-width: 340px;
+  }
+  .gallows-rectangle-2 {
+    left: 144px;
+    height: 315px;
+    bottom: 380px;
+  }
+  .gallows-rectangle-4 {
+    left: 250px;
+  }
+  .head {
+    left: 204px;
+  }
+  .body {
+    left: 252px;
+  }
+  .left-hand {
+    left: 190px;
+  }
+  .right-hand {
+    left: 251px;
+  }
+  .left-leg {
+    left: 188px;
+  }
+  .right-leg {
+    left: 253px;
+  }
+  .game-container {
+    margin-top: 20px;
+  }
+}

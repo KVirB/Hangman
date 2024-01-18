@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "question": "Are small to medium-sized, omnivorous mammals belonging to several genera of the family Canidae.",
+    "word": ["F", "O", "X"]
+  },
+  {
+    "id": 2,
+    "question": "Is a thoroughfare for the conveyance of traffic that mostly has an improved surface for use by vehicles (motorized and non-motorized) and pedestrians.",
+    "word": ["R", "O", "A", "D"]
+  },
+  {
+    "id": 3,
+    "question": "Is one of the oldest alcoholic drinks in the world, the most widely consumed, and the third most popular drink after water and tea.",
+    "word": ["B", "E", "E", "R"]
+  },
+  {
+    "id": 4,
+    "question": "Is a type of song, and partially synonymous with devotional song, specifically written for the purpose of adoration or prayer, and typically addressed to a deity or deities, or to a prominent figure or personification",
+    "word": ["H", "Y", "M", "N"]
+  },
+  {
+    "id": 5,
+    "question": "Is the largest country by area in Oceania and the world's sixth-largest country.",
+    "word": ["A", "U", "S", "T", "R", "A", "L", "I", "A"]
+  },
+  {
+    "id": 6,
+    "question": "Is a legendary creature that has been described since antiquity as a beast with a single large, pointed, spiraling horn projecting from its forehead",
+    "word": ["U", "N", "I", "C", "O", "R", "N"]
+  },
+  {
+    "id": 7,
+    "question": "Is a motor vehicle with wheels",
+    "word": ["C", "A", "R"]
+  },
+  {
+    "id": 8,
+    "question": "Is a bird of the genus Corvus, or more broadly a synonym for all of Corvus",
+    "word": ["C", "R", "O", "W"]
+  },
+  {
+    "id": 9,
+    "question": "Is an infectious disease caused by the bacterium Yersinia pestis. Symptoms include fever, weakness and headache.",
+    "word": ["P", "L", "A", "G", "U", "E"]
+  },
+  {
+    "id": 10,
+    "question": "Is a mechanical or electronic fastening device that is released by a physical object (such as a key, keycard, fingerprint, RFID card, security token or coin), by supplying secret information (such as a number or letter permutation or password), by a combination thereof, or it may only be able to be opened from one side, such as a door chain",
+    "word": ["L", "O", "C", "K"]
+  }
+]
